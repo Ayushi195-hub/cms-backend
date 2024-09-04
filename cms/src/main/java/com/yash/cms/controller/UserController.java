@@ -21,16 +21,23 @@ public class UserController {
     UserService userService;
 
     @PostMapping(path = "/signup")
-    public ResponseEntity<String> signUp(@RequestBody(required = true)Map<String,String> requestMap) {
-    try{
-        return userService.signUp(requestMap);
-    }
-    catch(Exception e)
-    {
-        e.printStackTrace();
-    }
-    return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<String> signUp(@RequestBody Map<String, String> requestMap) {
+        try {
+            return userService.signUp(requestMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @PostMapping(path = "/login")
+    public ResponseEntity<String> login(@RequestBody Map<String, String> requestMap) {
+        try {
+            return userService.login(requestMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 }

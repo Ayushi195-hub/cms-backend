@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
         return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @Override
+    public ResponseEntity<String> login(Map<String, String> requestMap) {
+        return null;
+    }
+
     private boolean validateSignupMap(Map<String, String> requestMap){
         if(requestMap.containsKey("name") && requestMap.containsKey("contactNumber")&& requestMap.containsKey("email") && requestMap.containsKey("password")){
             return true;
@@ -56,7 +61,7 @@ public class UserServiceImpl implements UserService {
      user.setContactNumber(requestMap.get("contactNumber"));
      user.setEmail(requestMap.get("email"));
      user.setPassword(requestMap.get("password"));
-     user.setStatus("false");
+     //user.setStatus("false");
      user.setRole("user");
      return user;
     }
